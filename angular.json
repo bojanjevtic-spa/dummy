@@ -123,6 +123,46 @@
           }
         }
       }
+    },
+    "dummyLib": {
+      "projectType": "library",
+      "root": "projects/dummy-lib",
+      "sourceRoot": "projects/dummy-lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/dummy-lib/tsconfig.lib.json",
+            "project": "projects/dummy-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/dummy-lib/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dummy-lib/src/test.ts",
+            "tsConfig": "projects/dummy-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/dummy-lib/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/dummy-lib/tsconfig.lib.json",
+              "projects/dummy-lib/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "dummyproject"
 }
